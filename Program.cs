@@ -19,7 +19,7 @@ namespace BlowUp
                 }
             }
             Board f = new Board();
-             guh = f.AddMines(guh,10);
+             guh = f.AddMines(guh,50);
             guh = f.GameBoard(guh);
         }
     }
