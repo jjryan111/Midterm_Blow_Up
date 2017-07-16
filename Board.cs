@@ -26,7 +26,7 @@ namespace BlowUp
                     numMi--;
                 }
             }
-
+            // PrintBoard(board);
             return board;
         }
         public int[,] GameBoard(int[,] board)
@@ -38,6 +38,8 @@ namespace BlowUp
 
                     if (board[i, j] >= 100)
                     {
+                        //                        Console.WriteLine("I = "+i+" J = "+j);
+                        // I = Column, J = Row
                         if (((i - 1) >= 0) && ((i + 1) < board.GetLength(0)))
                         {
                             //Middle of the board case
@@ -54,101 +56,117 @@ namespace BlowUp
 
                             }
 
-                            ////Left edge case
-                            //else if ((j - 1) >= 0)
-                            //{
-                            //    board[(i - 1), (j - 1)]++;
-                            //    board[(i - 1), j]++;
-                            //    // board[(i - 1), (j + 1)]++;
-                            //    board[i, (j - 1)]++;
-                            //    // board[i, (j + 1)]++;
-                            //    board[(i + 1), (j - 1)]++;
-                            //    board[(i + 1), j]++;
-                            //    // board[(i + 1), (j + 1)]++;
-                            //}
+                            //Top edge case
+                            else if ((j - 1) >= 0)
+                            {
+                                board[(i - 1), (j - 1)]++;
+                                board[(i - 1), j]++;
+                                // board[(i - 1), (j + 1)]++;
+                                board[i, (j - 1)]++;
+                                // board[i, (j + 1)]++;
+                                board[(i + 1), (j - 1)]++;
+                                board[(i + 1), j]++;
+                                // board[(i + 1), (j + 1)]++;
+                            }
 
-                            ////Right edge case
-                            //else if ((j + 1) < board.GetLength(1))
-                            //{
-                            //    //board[(i - 1), (j - 1)]++*/;
-                            //    board[(i - 1), j]++;
-                            //    board[(i - 1), (j + 1)]++;
-                            //    //board[i, (j - 1)]++;
-                            //    board[i, (j + 1)]++;
-                            //    //board[(i + 1), (j - 1)]++;
-                            //    board[(i + 1), j]++;
-                            //    board[(i + 1), (j + 1)]++;
-                            //}
+                            //Bottom edge case
+                            else if ((j + 1) < board.GetLength(1))
+                            {
+                                //board[(i - 1), (j - 1)]++*/;
+                                board[(i - 1), j]++;
+                                board[(i - 1), (j + 1)]++;
+                                //board[i, (j - 1)]++;
+                                board[i, (j + 1)]++;
+                                //board[(i + 1), (j - 1)]++;
+                                board[(i + 1), j]++;
+                                board[(i + 1), (j + 1)]++;
+                            }
                         }
+
+                        //Working
+
+                        else if ((i - 1) >= 0)
+                        {
+                            // Right edge case
+                            if (((j - 1) >= 0) && ((j + 1) < board.GetLength(1)))
+                            {
+                                board[(i - 1), (j - 1)]++;
+                                board[(i - 1), j]++;
+                                board[(i - 1), (j + 1)]++;
+                                board[i, (j - 1)]++;
+                                board[i, (j + 1)]++;
+                                //board[(i + 1), (j - 1)]++;
+                                //board[(i + 1), j]++;
+                                //board[(i + 1), (j + 1)]++;
+                            }
+                            //Top Right Corner case
+                            else if ((j - 1) >= 0)
+                            {
+                                board[(i - 1), (j - 1)]++;
+                                board[(i - 1), j]++;
+                                //board[(i - 1), (j + 1)]++;
+                                board[i, (j - 1)]++;
+                                //board[i, (j + 1)]++;
+                                //board[(i + 1), (j - 1)]++;
+                                //board[(i + 1), j]++;
+                                //board[(i + 1), (j + 1)]++;
+                            }
+                           // Working
+                           //Top right corner case
+                            else if ((j + 1) < board.GetLength(1))
+                            {
+
+                                // board[(i - 1), (j - 1)]++;
+                                board[(i - 1), j]++;
+                                board[(i - 1), (j + 1)]++;
+                                //board[i, (j - 1)]++;
+                                board[i, (j + 1)]++;
+                                //board[(i + 1), (j - 1)]++;
+                                //board[(i + 1), j]++;
+                                //board[(i + 1), (j + 1)]++;
+                            }
+                        }
+                        else if ((i + 1) < board.GetLength(0))
+
+                        {// Left edge case
+                            if (((j - 1) >= 0) && ((j + 1) < board.GetLength(1)))
+                            {
+                                //board[(i - 1), (j - 1)]++;
+                                //board[(i - 1), j]++;
+                                //board[(i - 1), (j + 1)]++;
+                                board[i, (j - 1)]++;
+                                board[i, (j + 1)]++;
+                                board[(i + 1), (j - 1)]++;
+                                board[(i + 1), j]++;
+                                board[(i + 1), (j + 1)]++;
+                            }
+                            else if ((j + 1) < board.GetLength(1))
+                            {// Bottom right corner case
+
+                                //board[(i - 1), (j - 1)]++;
+                                //board[(i - 1), j]++;
+                                //board[(i - 1), (j + 1)]++;
+                                //board[i, (j - 1)]++;
+                                board[i, (j + 1)]++;
+                                //board[(i + 1), (j - 1)]++;
+                                board[(i + 1), j]++;
+                                board[(i + 1), (j + 1)]++;
+                            }
+                            //bottom left corner case
+                            else if ((j-1)>=0)
+                            {
+                                //board[(i - 1), (j - 1)]++;
+                                //board[(i - 1), j]++;
+                                //board[(i - 1), (j + 1)]++;
+                                board[i, (j - 1)]++;
+                                //board[i, (j + 1)]++;
+                                board[(i + 1), (j - 1)]++;
+                                board[(i + 1), j]++;
+                                //board[(i + 1), (j + 1)]++;
+                            }
+                        }
+                        
                     }
-                    //Working
-                
-                    //else if (((i - 1) <= 0))
-                    //{
-                    //    //Top edge case
-                    //    if (((j - 1) >= 0) && ((j + 1) < board.GetLength(1)))
-                    //    {
-                    //        board[(i - 1), (j - 1)]++;
-                    //        board[(i - 1), j]++;
-                    //        board[(i - 1), (j + 1)]++;
-                    //        board[i, (j - 1)]++;
-                    //        board[i, (j + 1)]++;
-                    //        //board[(i + 1), (j - 1)]++;
-                    //        //board[(i + 1), j]++;
-                    //        //board[(i + 1), (j + 1)]++;
-                    //    }
-
-                        //    else if ((j - 1) >= 0)
-                        //    {//Top Left Corner case
-                        //        //board[(i - 1), (j - 1)]++;
-                        //        //board[(i - 1), j]++;
-                        //        //board[(i - 1), (j + 1)]++;
-                        //        //board[i, (j - 1)]++;
-                        //        //board[i, (j + 1)]++;
-                        //        //board[(i + 1), (j - 1)]++;
-                        //        //board[(i + 1), j]++;
-                        //        //board[(i + 1), (j + 1)]++;
-                        //    }
-                        //    else if ((j + 1) < board.GetLength(1))
-                        //    {//Top right corner case
-
-                        //        // board[(i - 1), (j - 1)]++;
-                        //        //board[(i - 1), j]++;
-                        //        //board[(i - 1), (j + 1)]++;
-                        //        //board[i, (j - 1)]++;
-                        //        board[i, (j + 1)]++;
-                        //        //board[(i + 1), (j - 1)]++;
-                        //        board[(i + 1), j]++;
-                        //        board[(i + 1), (j + 1)]++;
-                        //    }
-                        //}
-                        //else if ((i + 1) < board.GetLength(0))
-                        //{//bottom left corner case
-                        //    if ((j - 1) >= 0)
-                        //    {
-                        //        //board[(i - 1), (j - 1)]++;
-                        //        //board[(i - 1), j]++;
-                        //        //board[(i - 1), (j + 1)]++;
-                        //        //board[i, (j - 1)]++;
-                        //        board[i, (j + 1)]++;
-                        //        //board[(i + 1), (j - 1)]++;
-                        //        board[(i + 1), j]++;
-                        //        board[(i + 1), (j + 1)]++;
-                        //    }
-                        //else if ((j + 1) < board.GetLength(1))
-                        //{//bottom right corner case
-
-                        //    //board[(i - 1), (j - 1)]++;
-                        //    board[(i - 1), j]++;
-                        //    board[(i - 1), (j + 1)]++;
-                        //    //board[i, (j - 1)]++;
-                        //    board[i, (j + 1)]++;
-                        //    //board[(i + 1), (j - 1)]++;
-                        //    //board[(i + 1), j]++;
-                        //    //board[(i + 1), (j + 1)]++;
-                        //}
-                //    }
-
 
                 }
             }
