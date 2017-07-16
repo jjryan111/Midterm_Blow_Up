@@ -14,16 +14,16 @@ namespace BlowUp
 
         }
 
-        public int[,] AddMines(int[,] board, int numMi)
+        public int[,] AddMines(int[,] board, int numMines)
         {
-            while (numMi != 0)
+            while (numMines != 0)
             {
                 int index1 = n.Next(0, board.GetLength(0));
                 int index2 = n.Next(0, board.GetLength(1));
                 if (board[index1, index2] == 0)
                 {
                     board[index1, index2] = 100;
-                    numMi--;
+                    numMines--;
                 }
             }
             // PrintBoard(board);
@@ -177,17 +177,17 @@ namespace BlowUp
         }
         public void PrintBoard(int[,] board)
         {
-            for (int m = 0; m < board.GetLength(0); m++)
+            for (int i = 0; i < board.GetLength(0); i++)
             {
-                for (int l = 0; l < board.GetLength(1); l++)
+                for (int j = 0; j < board.GetLength(1); j++)
                 {
-                    if ((board[l, m]) < 10)
+                    if ((board[i, j]) < 10)
                     {
-                        Console.Write(board[l, m] + "   ");
+                        Console.Write(board[i, j] + "   ");
                     }
                     else
                     {
-                        Console.Write(board[l, m] + " ");
+                        Console.Write(board[i, j] + " ");
                     }
 
                 }
