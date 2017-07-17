@@ -70,28 +70,32 @@ namespace BlowUp
             }
             else
             {
-                int i = zeroLists[0];
-                int j = zeroLists[1];
-                zeroLists.Remove(i);
-                zeroLists.Remove(j);
+                
                 while (!done)
                 {
-                    foreach(int k in zeroLists)
-                    {
-                        Console.WriteLine(k);
-                    }
-                    Console.ReadLine();
+                    int i = zeroLists[0];
+                    int j = zeroLists[1];
+                    zeroLists.Remove(i);
+                    zeroLists.Remove(j);
+                    //foreach (int k in zeroLists)
+                    //{
+                    //    Console.WriteLine(k);
+                    //}
+                    //Console.ReadLine();
                     string whereAt = BoardCases(board, i, j);
-                    if (board[i, j] < 99)
-                    {
+                    //if (board[i, j] < 99)
+                    //{
                        
-                        if (board[i, j] > 0)
+                        if (board[i, j] > 100)
                         {
                             done = true;
                         }
                         else
                         {
+                        if (board[i, j] < 10)
+                        {
                             board[i, j] += 10;
+                        }
                             // I = Column, J = Row
                             if (whereAt == "m")
                             {
@@ -151,7 +155,7 @@ namespace BlowUp
                         {
                             done = true;
                         }
-                    }
+                    //}
 
                 }
 
