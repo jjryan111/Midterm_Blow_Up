@@ -58,7 +58,7 @@ namespace BlowUp
             }
             return board;
         }
-    
+
         public int[,] RevealZero(int[,] board, List<int> zeroLists)
         {
 
@@ -66,11 +66,11 @@ namespace BlowUp
             if (zeroLists.Count == 0)
             {
                 done = true;
-                
+
             }
             else
             {
-                
+
                 while (!done)
                 {
                     int i = zeroLists[0];
@@ -85,76 +85,76 @@ namespace BlowUp
                     string whereAt = BoardCases(board, i, j);
                     //if (board[i, j] < 99)
                     //{
-                       
-                        if (board[i, j] > 100)
-                        {
-                            done = true;
-                        }
-                        else
-                        {
-                        if (board[i, j] < 10)
+
+                    if (board[i, j] > 100)
+                    {
+                        done = true;
+                    }
+                    //else
+                    //{
+                    if (board[i, j] < 10)
                         {
                             board[i, j] += 10;
                         }
-                            // I = Column, J = Row
-                            if (whereAt == "m")
-                            {
-                                if ((board[(i - 1), (j - 1)] == 0))
-                                {
-                                    zeroLists.Add((i - 1));
-                                    zeroLists.Add((j - 1));
-                                }
-                                if ((board[(i - 1), j] == 0))
-                                {
-                                    zeroLists.Add((i - 1));
-                                    zeroLists.Add(j);
-                                }
-                                if (board[(i - 1), (j + 1)] == 0)
-                                {
-                                    zeroLists.Add((i - 1));
-                                    zeroLists.Add((j + 1));
-                                }
-                                if (board[i, (j - 1)] == 0)
-                                {
-                                    zeroLists.Add(i);
-                                    zeroLists.Add((j - 1));
-                                }
-                                if (board[i, (j - 1)] == 0)
-                                {
-                                    zeroLists.Add(i);
-                                    zeroLists.Add(j - 1);
-                                }
-                                if (board[i, (j + 1)] == 0)
-                                {
-                                    zeroLists.Add(i);
-                                    zeroLists.Add((j + 1));
-                                }
-                                if (board[(i + 1), (j - 1)] == 0)
-                                {
-                                    zeroLists.Add((i + 1));
-                                    zeroLists.Add((j - 1));
-                                }
-                                if (board[(i + 1), j] == 0)
-                                {
-                                    zeroLists.Add((i - 1));
-                                    zeroLists.Add(j);
-                                }
-                                if (board[(i + 1), (j + 1)] == 0)
-                                {
-                                    zeroLists.Add((i + 1));
-                                    zeroLists.Add((j + 1));
-                                }
-                            }
-                            else
-                            {
-                                zeroLists.Remove(i);
-                                zeroLists.Remove(j);
-                            }
-                        }
-                        if (zeroLists.Count == 0)
+                        // I = Column, J = Row
+                        if (whereAt == "m")
                         {
-                            done = true;
+                            if ((board[(i - 1), (j - 1)] == 0))
+                            {
+                                zeroLists.Add((i - 1));
+                                zeroLists.Add((j - 1));
+                            }
+                            if ((board[(i - 1), j] == 0))
+                            {
+                                zeroLists.Add((i - 1));
+                                zeroLists.Add(j);
+                            }
+                            if (board[(i - 1), (j + 1)] == 0)
+                            {
+                                zeroLists.Add((i - 1));
+                                zeroLists.Add((j + 1));
+                            }
+                            if (board[i, (j - 1)] == 0)
+                            {
+                                zeroLists.Add(i);
+                                zeroLists.Add((j - 1));
+                            }
+                            if (board[i, (j - 1)] == 0)
+                            {
+                                zeroLists.Add(i);
+                                zeroLists.Add(j - 1);
+                            }
+                            if (board[i, (j + 1)] == 0)
+                            {
+                                zeroLists.Add(i);
+                                zeroLists.Add((j + 1));
+                            }
+                            if (board[(i + 1), (j - 1)] == 0)
+                            {
+                                zeroLists.Add((i + 1));
+                                zeroLists.Add((j - 1));
+                            }
+                            if (board[(i + 1), j] == 0)
+                            {
+                                zeroLists.Add((i - 1));
+                                zeroLists.Add(j);
+                            }
+                            if (board[(i + 1), (j + 1)] == 0)
+                            {
+                                zeroLists.Add((i + 1));
+                                zeroLists.Add((j + 1));
+                            }
                         }
+                        else
+                        {
+                            zeroLists.Remove(i);
+                            zeroLists.Remove(j);
+                        }
+                    //}
+                    if (zeroLists.Count == 0)
+                    {
+                        done = true;
+                    }
                     //}
 
                 }
@@ -162,84 +162,84 @@ namespace BlowUp
             }
             return board;
         }
-    
 
 
 
 
-    public string BoardCases(int[,] board, int i, int j)
-    {
-        string whereAt = "dunno";
-        if (board[i, j] <= 100)
+
+        public string BoardCases(int[,] board, int i, int j)
         {
-            //                        Console.WriteLine("I = "+i+" J = "+j);
-            // I = Column, J = Row
-            if (((i - 1) >= 0) && ((i + 1) < board.GetLength(0)))
+            string whereAt = "dunno";
+            if (board[i, j] <= 100)
             {
-//                Console.WriteLine("I=" + i + " J+" + j);
-                //Middle of the board case
-                if (((j - 1) >= 0) && ((j + 1) < board.GetLength(1)))
+                //                        Console.WriteLine("I = "+i+" J = "+j);
+                // I = Column, J = Row
+                if (((i - 1) >= 0) && ((i + 1) < board.GetLength(0)))
                 {
-                    whereAt = "m";
+                    //                Console.WriteLine("I=" + i + " J+" + j);
+                    //Middle of the board case
+                    if (((j - 1) >= 0) && ((j + 1) < board.GetLength(1)))
+                    {
+                        whereAt = "m";
+                    }
+
+                    //Top edge case
+                    else if ((j - 1) >= 0)
+                    {
+                        whereAt = "t";
+                    }
+
+                    //Bottom edge case
+                    else if ((j + 1) < board.GetLength(1))
+                    {
+                        whereAt = "b";
+                    }
                 }
 
-                //Top edge case
-                else if ((j - 1) >= 0)
-                {
-                    whereAt = "t";
-                }
+                //Working
 
-                //Bottom edge case
-                else if ((j + 1) < board.GetLength(1))
+                else if ((i - 1) >= 0)
                 {
-                    whereAt = "b";
+                    // Right edge case
+                    if (((j - 1) >= 0) && ((j + 1) < board.GetLength(1)))
+                    {
+                        whereAt = "r";
+                    }
+                    //Top Right Corner case
+                    else if ((j - 1) >= 0)
+                    {
+                        whereAt = "trc";
+                    }
+                    // Working
+                    //Top right corner case
+                    else if ((j + 1) < board.GetLength(1))
+                    {
+                        whereAt = "brc";
+                    }
+                }
+                else if ((i + 1) < board.GetLength(0))
+
+                {// Left edge case
+                    if (((j - 1) >= 0) && ((j + 1) < board.GetLength(1)))
+                    {
+                        whereAt = "l";
+                    }
+                    else if ((j + 1) < board.GetLength(1))
+                    {// Bottom left corner case
+                        whereAt = "blc";
+                    }
+                    //Top left corner case
+                    else if ((j - 1) >= 0)
+                    {
+                        whereAt = "tlc";
+                    }
                 }
             }
-
-            //Working
-
-            else if ((i - 1) >= 0)
-            {
-                // Right edge case
-                if (((j - 1) >= 0) && ((j + 1) < board.GetLength(1)))
-                {
-                    whereAt = "r";
-                }
-                //Top Right Corner case
-                else if ((j - 1) >= 0)
-                {
-                    whereAt = "trc";
-                }
-                // Working
-                //Top right corner case
-                else if ((j + 1) < board.GetLength(1))
-                {
-                    whereAt = "brc";
-                }
-            }
-            else if ((i + 1) < board.GetLength(0))
-
-            {// Left edge case
-                if (((j - 1) >= 0) && ((j + 1) < board.GetLength(1)))
-                {
-                    whereAt = "l";
-                }
-                else if ((j + 1) < board.GetLength(1))
-                {// Bottom left corner case
-                    whereAt = "blc";
-                }
-                //Top left corner case
-                else if ((j - 1) >= 0)
-                {
-                    whereAt = "tlc";
-                }
-            }
+            return whereAt;
         }
-        return whereAt;
-    }
 
-    
-    public int[,] GameBoardold(int[,] board)
+
+        public int[,] GameBoardold(int[,] board)
         {
             for (int i = 0; i < board.GetLength(0); i++)
             {
@@ -321,8 +321,8 @@ namespace BlowUp
                                 //board[(i + 1), j]++;
                                 //board[(i + 1), (j + 1)]++;
                             }
-                           // Working
-                           //Top right corner case
+                            // Working
+                            //Top right corner case
                             else if ((j + 1) < board.GetLength(1))
                             {
 
@@ -363,7 +363,7 @@ namespace BlowUp
                                 board[(i + 1), (j + 1)]++;
                             }
                             //bottom left corner case
-                            else if ((j-1)>=0)
+                            else if ((j - 1) >= 0)
                             {
                                 //board[(i - 1), (j - 1)]++;
                                 //board[(i - 1), j]++;
@@ -375,13 +375,13 @@ namespace BlowUp
                                 //board[(i + 1), (j + 1)]++;
                             }
                         }
-                        
+
                     }
 
                 }
             }
-        
-    
+
+
             PrintBoard(board);
             return board;
         }
