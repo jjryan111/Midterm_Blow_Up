@@ -49,7 +49,7 @@ namespace BlowUp
                     {// if you find a mine add 1 to the 8 squares around it
                      // Don't worry if you add 1 to a mine; the program knows anything 100 or more
                      // is a mine
-                     // Since we made sure that mines can't be placed on an edge in the last step
+                     // Since we made sure that mines can't be placed on an edge in the AddMines
                      // we don't have to worry about this running out of bounds
                         board[(i - 1), (j - 1)]++;
                         board[(i - 1), j]++;
@@ -65,88 +65,86 @@ namespace BlowUp
             }
             return board;
         }
+        
 
         public string BoardCases(int[,] board, int i, int j)
         { //Looks at where the chosen square is in relation to the edges and corners of the board
             string whereAt = "dunno";
-            
-            
-                if (((i - 1) >= 0) && ((i + 1) < board.GetLength(0)))
+
+
+            if (((i - 1) >= 0) && ((i + 1) < board.GetLength(0)))
+            {
+                //Middle of the board case
+                if (((j - 1) >= 0) && ((j + 1) < board.GetLength(1)))
                 {
-                    //Middle of the board case
-                    if (((j - 1) >= 0) && ((j + 1) < board.GetLength(1)))
-                    {
-                        whereAt = "m";
-                    }
-
-                    //Top edge case
-                    else if ((j - 1) >= 0)
-                    {
-                        whereAt = "t";
-                    }
-
-                    //Bottom edge case
-                    else if ((j + 1) < board.GetLength(1))
-                    {
-                        whereAt = "b";
-                    }
+                    whereAt = "m";
                 }
-                
-                else if ((i - 1) >= 0)
+
+                //Top edge case
+                else if ((j - 1) >= 0)
                 {
-                    // Right edge case
-                    if (((j - 1) >= 0) && ((j + 1) < board.GetLength(1)))
-                    {
-                        whereAt = "r";
-                    }
-                    //Top Right Corner case
-                    else if ((j - 1) >= 0)
-                    {
-                        whereAt = "trc";
-                    }
-                    //Top right corner case
-                    else if ((j + 1) < board.GetLength(1))
-                    {
-                        whereAt = "brc";
-                    }
+                    whereAt = "t";
                 }
-                else if ((i + 1) < board.GetLength(0))
 
-                {// Left edge case
-                    if (((j - 1) >= 0) && ((j + 1) < board.GetLength(1)))
-                    {
-                        whereAt = "l";
-                    }
-                    else if ((j + 1) < board.GetLength(1))
-                    {// Bottom left corner case
-                        whereAt = "blc";
-                    }
-                    //Top left corner case
-                    else if ((j - 1) >= 0)
-                    {
-                        whereAt = "tlc";
-                    }
+                //Bottom edge case
+                else if ((j + 1) < board.GetLength(1))
+                {
+                    whereAt = "b";
                 }
-            
+            }
+
+            else if ((i - 1) >= 0)
+            {
+                // Right edge case
+                if (((j - 1) >= 0) && ((j + 1) < board.GetLength(1)))
+                {
+                    whereAt = "r";
+                }
+                //Top Right Corner case
+                else if ((j - 1) >= 0)
+                {
+                    whereAt = "trc";
+                }
+                //Top right corner case
+                else if ((j + 1) < board.GetLength(1))
+                {
+                    whereAt = "brc";
+                }
+            }
+            else if ((i + 1) < board.GetLength(0))
+
+            {// Left edge case
+                if (((j - 1) >= 0) && ((j + 1) < board.GetLength(1)))
+                {
+                    whereAt = "l";
+                }
+                else if ((j + 1) < board.GetLength(1))
+                {// Bottom left corner case
+                    whereAt = "blc";
+                }
+                //Top left corner case
+                else if ((j - 1) >= 0)
+                {
+                    whereAt = "tlc";
+                }
+            }
+
             return whereAt;
         }
-
-
         public void PrintBoard(int[,] board)
         { // Prints the back end board
-            for (int i = 0; i < board.GetLength(0); i++)
-            {
-                for (int j = 0; j < board.GetLength(1); j++)
-                {
-                    if ((board[i, j]) < 10)
-                    {
-                        Console.Write(board[i, j] + "   ");
-                    }
-                    else
-                    {
-                        Console.Write(board[i, j] + " ");
-                    }
+            int x = board.GetLength(0);
+            int y = board.GetLength(1);
+            x--;
+            y--;
 
+            for (int i = 0; i < x; i++)
+            {
+                for (int j = 0; j < y; j++)
+                {
+                    
+                        Console.Write(board[i, j] + "\t");
+                    
                 }
                 Console.WriteLine();
             }
@@ -157,6 +155,7 @@ namespace BlowUp
          // surrounding the user choice
 
             bool done = false;
+            
             //if (zeroLists.Count == 0)
             //{
             //    done = true;

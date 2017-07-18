@@ -1,0 +1,6 @@
+c:\users\ryanja01\documents\visual studio 2017\Projects\BlowUp\BlowUp\bin\Debug\BlowUp.exe.config
+c:\users\ryanja01\documents\visual studio 2017\Projects\BlowUp\BlowUp\bin\Debug\BlowUp.exe
+c:\users\ryanja01\documents\visual studio 2017\Projects\BlowUp\BlowUp\bin\Debug\BlowUp.pdb
+c:\users\ryanja01\documents\visual studio 2017\Projects\BlowUp\BlowUp\obj\Debug\BlowUp.csprojResolveAssemblyReference.cache
+c:\users\ryanja01\documents\visual studio 2017\Projects\BlowUp\BlowUp\obj\Debug\BlowUp.exe
+c:\users\ryanja01\documents\visual studio 2017\Projects\BlowUp\BlowUp\obj\Debug\BlowUp.pdb
