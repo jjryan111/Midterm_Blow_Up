@@ -170,125 +170,133 @@ namespace BlowUp
          // surrounding the user choice
 
             bool done = false;
-            
-
+            int x = zeroLists[0];
+            int y = zeroLists[1];
+            if ((board[x, y] > 0) && (board[x, y] < 10))
+            {
+                board[x, y] += 10;
+            }
+            else if (board[x, y] > 99)
+            {
+                Console.WriteLine("BOOM!");
+            }
             //if (zeroLists.Count == 0)
             //{
             //    done = true;
 
             //}
-            //else
-            //{
-            while (!done)
-            {// Take the fist 2 numbers off the top of the list of squares with 0s in them
-             // These are the numbers we will check
-                int i = zeroLists[0];
-                int j = zeroLists[1];
-                zeroLists.Remove(i);
-                zeroLists.Remove(j);
-                // If we're near an edge we're off the player board and don't have to worry about it.
-                string whereAt = BoardCases(board, i, j);
-
-                //if (board[i, j] > 100)
-                //{
-                //    done = true;
-                //}
-                if (board[i, j] < 10)
-                {
-                    board[i, j] += 10;
-                    //Anything 10 and over but less than 100 is a revealed square on the player board
-                    // What we're checking here is if the spot has already been revealed
-                }
-                if (whereAt == "m")
-                {// if we aren't on an edge or a corner look for 0's in the 8 squares surrounding 
-                 // the chosen square
-                    if (board[(i - 1), (j - 1)] > 0 && (board[(i - 1), (j - 1)] < 10))
-                    {
-                        board[(i - 1), (j - 1)] += 10;
-                    }
-                    if (board[(i - 1), j] > 0 && (board[(i - 1), j] < 10))
-                    {
-                        board[(i - 1), j] += 10;
-                    }
-
-                    if (board[(i - 1), (j + 1)] > 0 && (board[(i - 1), (j + 1)] < 10))
-                    {
-                        board[(i - 1), (j + 1)] += 10;
-                    }
-                    if (board[i, (j - 1)] > 0 && (board[i, (j - 1)] < 10))
-                    {
-                        board[i, (j - 1)] += 10;
-                    }
-                    if (board[i, (j + 1)] > 0 && (board[i, (j + 1)] < 10))
-                    {
-                        board[i, (j + 1)] += 10;
-                    }
-                    if (board[(i+1), (j - 1)] > 0 && (board[(i + 1), (j - 1)] < 10))
-                    {
-                        board[(i+1), (j - 1)] += 10;
-                    }
-                    if (board[(i+1), j] > 0 && (board[(i + 1), j] < 10))
-                    {
-                        board[(i + 1), j] += 10;
-                    }
-                    if (board[(i+1), (j + 1)] > 0 && (board[(i + 1), (j + 1)] < 10))
-                    {
-                        board[(i + 1), (j + 1)] += 10;
-                    }
-                    if ((board[(i - 1), (j - 1)] == 0)) // one the top left
-                    {
-                        zeroLists.Add((i - 1));
-                        zeroLists.Add((j - 1));
-                    }
-                    if ((board[(i - 1), j] == 0)) //on the top middle
-                    {
-                        zeroLists.Add((i - 1));
-                        zeroLists.Add(j);
-                    }
-                    if (board[(i - 1), (j + 1)] == 0) //on the top right
-                    {
-                        zeroLists.Add((i - 1));
-                        zeroLists.Add((j + 1));
-                    }
-                    if (board[i, (j - 1)] == 0) //on the left
-                    {
-                        zeroLists.Add(i);
-                        zeroLists.Add((j - 1));
-                    }
-                    if (board[i, (j + 1)] == 0) //on the right
-                    {
-                        zeroLists.Add(i);
-                        zeroLists.Add(j + 1);
-                    }
-                    if (board[(i + 1), (j - 1)] == 0) //on the bottom left
-                    {
-                        zeroLists.Add((i + 1));
-                        zeroLists.Add((j - 1));
-                    }
-                    if (board[(i + 1), j] == 0) //on the bottom middle
-                    {
-                        zeroLists.Add((i + 1));
-                        zeroLists.Add(j);
-                    }
-                    if (board[(i + 1), (j + 1)] == 0) //on the bottom right
-                    {
-                        zeroLists.Add((i + 1));
-                        zeroLists.Add((j + 1));
-                    }
-                }
-                else
-                {// at the top we found out if the square we were looking at was on an edge
-                 //this tells the method to ignore those
-                   
+            else
+            {
+                while (!done)
+                {// Take the fist 2 numbers off the top of the list of squares with 0s in them
+                 // These are the numbers we will check
+                    int i = zeroLists[0];
+                    int j = zeroLists[1];
                     zeroLists.Remove(i);
                     zeroLists.Remove(j);
-                }
-                if (zeroLists.Count == 0)
-                {
-                    done = true;
+                    // If we're near an edge we're off the player board and don't have to worry about it.
+                    string whereAt = BoardCases(board, i, j);
+
+                    //if (board[i, j] > 100)
+                    //{
+                    //    done = true;
+                    //}
+                    if (board[i, j] < 10)
+                    {
+                        board[i, j] += 10;
+                        //Anything 10 and over but less than 100 is a revealed square on the player board
+                        // What we're checking here is if the spot has already been revealed
+                    }
+                    if (whereAt == "m")
+                    {// if we aren't on an edge or a corner look for 0's in the 8 squares surrounding 
+                     // the chosen square
+                        if (board[(i - 1), (j - 1)] > 0 && (board[(i - 1), (j - 1)] < 10))
+                        {
+                            board[(i - 1), (j - 1)] += 10;
+                        }
+                        if (board[(i - 1), j] > 0 && (board[(i - 1), j] < 10))
+                        {
+                            board[(i - 1), j] += 10;
+                        }
+
+                        if (board[(i - 1), (j + 1)] > 0 && (board[(i - 1), (j + 1)] < 10))
+                        {
+                            board[(i - 1), (j + 1)] += 10;
+                        }
+                        if (board[i, (j - 1)] > 0 && (board[i, (j - 1)] < 10))
+                        {
+                            board[i, (j - 1)] += 10;
+                        }
+                        if (board[i, (j + 1)] > 0 && (board[i, (j + 1)] < 10))
+                        {
+                            board[i, (j + 1)] += 10;
+                        }
+                        if (board[(i + 1), (j - 1)] > 0 && (board[(i + 1), (j - 1)] < 10))
+                        {
+                            board[(i + 1), (j - 1)] += 10;
+                        }
+                        if (board[(i + 1), j] > 0 && (board[(i + 1), j] < 10))
+                        {
+                            board[(i + 1), j] += 10;
+                        }
+                        if (board[(i + 1), (j + 1)] > 0 && (board[(i + 1), (j + 1)] < 10))
+                        {
+                            board[(i + 1), (j + 1)] += 10;
+                        }
+                        if ((board[(i - 1), (j - 1)] == 0)) // one the top left
+                        {
+                            zeroLists.Add((i - 1));
+                            zeroLists.Add((j - 1));
+                        }
+                        if ((board[(i - 1), j] == 0)) //on the top middle
+                        {
+                            zeroLists.Add((i - 1));
+                            zeroLists.Add(j);
+                        }
+                        if (board[(i - 1), (j + 1)] == 0) //on the top right
+                        {
+                            zeroLists.Add((i - 1));
+                            zeroLists.Add((j + 1));
+                        }
+                        if (board[i, (j - 1)] == 0) //on the left
+                        {
+                            zeroLists.Add(i);
+                            zeroLists.Add((j - 1));
+                        }
+                        if (board[i, (j + 1)] == 0) //on the right
+                        {
+                            zeroLists.Add(i);
+                            zeroLists.Add(j + 1);
+                        }
+                        if (board[(i + 1), (j - 1)] == 0) //on the bottom left
+                        {
+                            zeroLists.Add((i + 1));
+                            zeroLists.Add((j - 1));
+                        }
+                        if (board[(i + 1), j] == 0) //on the bottom middle
+                        {
+                            zeroLists.Add((i + 1));
+                            zeroLists.Add(j);
+                        }
+                        if (board[(i + 1), (j + 1)] == 0) //on the bottom right
+                        {
+                            zeroLists.Add((i + 1));
+                            zeroLists.Add((j + 1));
+                        }
+                    }
+                    else
+                    {// at the top we found out if the square we were looking at was on an edge
+                     //this tells the method to ignore those
+
+                        zeroLists.Remove(i);
+                        zeroLists.Remove(j);
+                    }
+                    if (zeroLists.Count == 0)
+                    {
+                        done = true;
+                    }
                 }
             }
-            //}
             return board;
         }
     }
